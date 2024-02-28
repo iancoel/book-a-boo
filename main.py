@@ -1,5 +1,9 @@
+from get_book import get_book
+
 def main():
   book_path = "books/frankenstein.txt"
+
+  get_book()
 
   with open(book_path) as file:
     complete_file = file.read()
