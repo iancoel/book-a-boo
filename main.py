@@ -9,6 +9,10 @@ def main():
     for letter in complete_file:
       normalized_letter = letter.lower()
       count = letter_count.get(normalized_letter)
+
+      if not normalized_letter.isalpha():
+        continue
+
       if count:
         letter_count[normalized_letter] += 1
       else:
