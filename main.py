@@ -1,11 +1,10 @@
+from consts import BOOK_PATH
 from get_book import get_book
 
 def main():
-  book_path = "books/frankenstein.txt"
-
   get_book()
 
-  with open(book_path) as file:
+  with open(BOOK_PATH) as file:
     complete_file = file.read()
     word_count = len(complete_file.split())
     letter_count = {}
@@ -24,7 +23,7 @@ def main():
 
     sorted_letter_count = sort_dict(letter_count)
 
-    print(f"=== {book_path} report ===")
+    print(f"=== {BOOK_PATH} report ===")
     print(f"{word_count} found")
     print("")
 

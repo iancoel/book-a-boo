@@ -1,10 +1,9 @@
 import os
 import requests
 
-file_path = "books/frankenstein.txt"
+from consts import BOOK_PATH, BOOKS_DIR_PATH
 
 url = "https://raw.githubusercontent.com/asweigart/codebreaker/master/frankenstein.txt"
-dir_path = "books"
 
 def get_book():
   if not should_download():
@@ -15,7 +14,7 @@ def get_book():
   response = requests.get(url)
 
   if response.status_code == 200:
-      with open(file_path, "wb") as file:
+      with open(BOOK_PATH, "wb") as file:
           file.write(response.content)
       print("Saved book file")
       print("")
@@ -23,13 +22,13 @@ def get_book():
       print(f"Request failed: {response.status_code}")
 
 def should_download():
-  if os.path.exists(file_path):
-    print(f"File {file_path} has already been downloaded.")
+  if os.path.exists(BOOK_PATH):
+    print(f"File {BOOK_PATH} has already been downloaded.")
     print("")
     return False
 
   return True
 
 def check_dir_exists():
-  if not os.path.exists(dir_path):
-    os.makedirs(dir_path)
+  if not os.path.exists(BOOKS_DIR_PATH):
+    os.makedirs(BOOKS_DIR_PATH)
